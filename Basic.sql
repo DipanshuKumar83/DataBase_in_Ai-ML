@@ -1,18 +1,25 @@
-CREATE DATABASE college;
-USE college;
+CREATE DATABASE Instragram;
 
-CREATE TABLE student(
-roll_no int,
-name varchar(50),
-age int
+USE Instragram ;
+
+CREATE TABLE user_detail(
+id INT ,
+user VARCHAR(100) NOT NULL,
+age INT DEFAULT 0
 );
 
-INSERT INTO student 
-VALUES 
-(1,"Dip",101),
-(2,"Amn",102);
+INSERT INTO user_detail
+VALUES
+(1,"RAM",20),
+(2,"DIPANSHU",22);
 
+SELECT id , max(age)
+FROM user_detail
+GROUP BY id 
+HAVING max(age)>20
+;
 
-SELECT *FROM student;
-SHOW TABLES
-
+CREATE TABLE temp(
+cust_id INT,
+FOREIGN KEY (cust_id) REFERENCES user_detail (id)
+);
